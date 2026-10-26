@@ -35,3 +35,7 @@ _Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu m
 * **UC4: Lizenzpreis berechnen:** Der Benutzer wählt ein Projekt und ein Lizenzmodell. Das Programm prüft die Spuren und berechnet automatisch den Verkaufspreis.
 * **UC5: Projekt löschen:** Der Benutzer entfernt ein nicht mehr benötigtes Beat Projekt aus der Liste.
 * **UC6: Daten speichern & laden:** Der Benutzer speichert seine Projekte in einer Datei (CSV/JSON), und das Programm lädt diese beim nächsten Start automatisch wieder.
+
+![ULM-Klassendiagramm](diagramm.drawio.png)
+### KI Prompt
+_Erstelle mir ein grobes, leicht verständliches UML Sequenzdiagramm in Mermaid Syntax für den Use Case Lizenzpreis berechnen. Zeige den Ablauf vom Benutzer über ConsoleUI, BeatService und BeatProject bis zur ExclusiveStrategy, die in einer Schleife die Zusatzkosten aller Tracks abfragt (inkl. Exception, falls ein Sample nicht geklärt ist)_
