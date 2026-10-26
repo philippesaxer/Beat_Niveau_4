@@ -24,9 +24,9 @@ _Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu m
 ## Anforderungen und Use Cases
 
 ## Technische und Funktionale Anforderungen
-* **3-Schichten-Trennung:** Saubere Aufteilung in Konsolen-UI (Eingabe/Ausgabe), Service-Logik (Verwaltung und Berechnungen) und Datenhaltung (Speichern/Laden via Datei).
+* **3 Schichten Trennung:** Saubere Aufteilung in Konsolen-UI (Eingabe/Ausgabe), Service-Logik (Verwaltung und Berechnungen) und Datenhaltung (Speichern/Laden via Datei).
 * **Validierung und Fehlerbehandlung:** Alle Benutzereingaben werden geprüft (z. B. BPM muss zwischen 40 und 300 liegen, Name darf nicht leer sein). Bei Fehlern werden eigene Exceptions geworfen.
-* **OO-Konzepte:** Einsatz von Vererbung und Polymorphismus bei den Spur-Typen, Delegation bei der Preisberechnung sowie mindestens zwei Design Patterns (Strategy für Lizenzmodelle, Factory für die Spur-Erstellung).
+* **OO Konzepte:** Einsatz von Vererbung und Polymorphismus bei den Spur-Typen, Delegation bei der Preisberechnung sowie mindestens zwei Design Patterns (Strategy für Lizenzmodelle, Factory für die Spur-Erstellung).
 
 ## Use Cases 
 * **UC1: Beat-Projekt erstellen:** Der Benutzer legt ein neues Projekt mit Titel, BPM und Tonart an.
