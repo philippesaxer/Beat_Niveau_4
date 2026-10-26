@@ -20,3 +20,18 @@ Ich entwickle eine Java-Konsolenapplikation, mit der Musikproduzenten ihre Beat-
 
 ### KI Prompt
 _Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu meinem Projekt: einen Beat und Musikprojekt Manager als Konsolen Applikation in Java umsetzen.   Dabei geht es nicht um echte Audiodateien, sondern um ein Verwaltungstool für Musikproduzenten: Man kann Beat-Projekte (mit BPM, Tonart etc.) erfassen, verschiedene Spur Typen wie Samples, Drums oder MIDI-Spuren hinzufügen (Vererbung/Polymorphismus) und automatisch Verkaufspreise für verschiedene Lizenzmodelle berechnen lassen (Design Patterns). Auch eigene Exceptions, eine eigene generische Klasse (z. B. für die Datenverwaltung/Suche) und Speicherung via JSON/CSV_
+
+## Anforderungen und Use Cases
+
+## Technische & Funktionale Anforderungen
+* **3-Schichten-Trennung:** Saubere Aufteilung in Konsolen-UI (Eingabe/Ausgabe), Service-Logik (Verwaltung und Berechnungen) und Datenhaltung (Speichern/Laden via Datei).
+* **Validierung und Fehlerbehandlung:** Alle Benutzereingaben werden geprüft (z. B. BPM muss zwischen 40 und 300 liegen, Name darf nicht leer sein). Bei Fehlern werden eigene Exceptions geworfen (z. B. `InvalidBpmException` oder `SampleNotClearedException` beim Exklusiv-Verkauf).
+* **OO-Konzepte:** Einsatz von Vererbung und Polymorphismus bei den Spur-Typen (`Track`), Delegation bei der Preisberechnung sowie mindestens zwei Design Patterns (*Strategy* für Lizenzmodelle, *Factory* für die Spur-Erstellung).
+
+## Use Cases 
+* **UC1 – Beat-Projekt erstellen:** Der Benutzer legt ein neues Projekt mit Titel, BPM und Tonart (z. B. 140 BPM, C Minor) an.
+* **UC2 – Spuren hinzufügen:** Der Benutzer wählt ein bestehendes Projekt aus und fügt eine Spur hinzu (Sample-, MIDI- oder Drum-Spur) inklusive der spezifischen Infos (z. B. verwendetes VST-Plugin oder ob ein Sample rechtlich geklärt ist).
+* **UC3 – Alle Projekte & Spuren anzeigen:** Der Benutzer lässt sich eine Übersicht aller gespeicherten Beats inklusive der enthaltenen Spuren und deren Details in der Konsole ausgeben.
+* **UC4 – Lizenzpreis berechnen:** Der Benutzer wählt ein Projekt und ein Lizenzmodell (z. B. *Basic Lease* oder *Exclusive Rights*). Das Programm prüft die Spuren und berechnet automatisch den Verkaufspreis.
+* **UC5 – Projekt löschen:** Der Benutzer entfernt ein nicht mehr benötigtes Beat-Projekt aus der Liste.
+* **UC6 – Daten speichern & laden:** Der Benutzer speichert seine Projekte in einer Datei (CSV/JSON), und das Programm lädt diese beim nächsten Start automatisch wieder.
