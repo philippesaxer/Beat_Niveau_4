@@ -23,15 +23,15 @@ _Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu m
 
 ## Anforderungen und Use Cases
 
-## Technische & Funktionale Anforderungen
+## Technische und Funktionale Anforderungen
 * **3-Schichten-Trennung:** Saubere Aufteilung in Konsolen-UI (Eingabe/Ausgabe), Service-Logik (Verwaltung und Berechnungen) und Datenhaltung (Speichern/Laden via Datei).
-* **Validierung und Fehlerbehandlung:** Alle Benutzereingaben werden geprüft (z. B. BPM muss zwischen 40 und 300 liegen, Name darf nicht leer sein). Bei Fehlern werden eigene Exceptions geworfen (z. B. `InvalidBpmException` oder `SampleNotClearedException` beim Exklusiv-Verkauf).
-* **OO-Konzepte:** Einsatz von Vererbung und Polymorphismus bei den Spur-Typen (`Track`), Delegation bei der Preisberechnung sowie mindestens zwei Design Patterns (*Strategy* für Lizenzmodelle, *Factory* für die Spur-Erstellung).
+* **Validierung und Fehlerbehandlung:** Alle Benutzereingaben werden geprüft (z. B. BPM muss zwischen 40 und 300 liegen, Name darf nicht leer sein). Bei Fehlern werden eigene Exceptions geworfen.
+* **OO-Konzepte:** Einsatz von Vererbung und Polymorphismus bei den Spur-Typen, Delegation bei der Preisberechnung sowie mindestens zwei Design Patterns (Strategy für Lizenzmodelle, Factory für die Spur-Erstellung).
 
 ## Use Cases 
-* **UC1 – Beat-Projekt erstellen:** Der Benutzer legt ein neues Projekt mit Titel, BPM und Tonart (z. B. 140 BPM, C Minor) an.
-* **UC2 – Spuren hinzufügen:** Der Benutzer wählt ein bestehendes Projekt aus und fügt eine Spur hinzu (Sample-, MIDI- oder Drum-Spur) inklusive der spezifischen Infos (z. B. verwendetes VST-Plugin oder ob ein Sample rechtlich geklärt ist).
-* **UC3 – Alle Projekte & Spuren anzeigen:** Der Benutzer lässt sich eine Übersicht aller gespeicherten Beats inklusive der enthaltenen Spuren und deren Details in der Konsole ausgeben.
-* **UC4 – Lizenzpreis berechnen:** Der Benutzer wählt ein Projekt und ein Lizenzmodell (z. B. *Basic Lease* oder *Exclusive Rights*). Das Programm prüft die Spuren und berechnet automatisch den Verkaufspreis.
-* **UC5 – Projekt löschen:** Der Benutzer entfernt ein nicht mehr benötigtes Beat-Projekt aus der Liste.
-* **UC6 – Daten speichern & laden:** Der Benutzer speichert seine Projekte in einer Datei (CSV/JSON), und das Programm lädt diese beim nächsten Start automatisch wieder.
+* **UC1: Beat-Projekt erstellen:** Der Benutzer legt ein neues Projekt mit Titel, BPM und Tonart an.
+* **UC2: Spuren hinzufügen:** Der Benutzer wählt ein bestehendes Projekt aus und fügt eine Spur hinzu inklusive der spezifischen Infos.
+* **UC3: Alle Projekte & Spuren anzeigen:** Der Benutzer lässt sich eine Übersicht aller gespeicherten Beats inklusive der enthaltenen Spuren und deren Details in der Konsole ausgeben.
+* **UC4: Lizenzpreis berechnen:** Der Benutzer wählt ein Projekt und ein Lizenzmodell. Das Programm prüft die Spuren und berechnet automatisch den Verkaufspreis.
+* **UC5: Projekt löschen:** Der Benutzer entfernt ein nicht mehr benötigtes Beat Projekt aus der Liste.
+* **UC6: Daten speichern & laden:** Der Benutzer speichert seine Projekte in einer Datei (CSV/JSON), und das Programm lädt diese beim nächsten Start automatisch wieder.
