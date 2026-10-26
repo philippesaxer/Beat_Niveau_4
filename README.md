@@ -15,8 +15,8 @@ Ich entwickle eine Java-Konsolenapplikation, mit der Musikproduzenten ihre Beat-
 * **Royalty Split Rechner:** Aufteilung der Einnahmen in Prozent berechnen, wenn mehrere Produzenten an einem Beat mitgearbeitet haben.
 * **Vertrags Export:** Eine kurze Textdatei mit den Lizenz und Preisdetails als Kaufübersicht für Kunden generieren.
 
-
-## KI Prompt
-_Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu meinem Projekt: einen Beat und Musikprojekt Manager als Konsolen Applikation in Java umsetzen.   Dabei geht es nicht um echte Audiodateien, sondern um ein Verwaltungstool für Musikproduzenten: Man kann Beat-Projekte (mit BPM, Tonart etc.) erfassen, verschiedene Spur Typen wie Samples, Drums oder MIDI-Spuren hinzufügen (Vererbung/Polymorphismus) und automatisch Verkaufspreise für verschiedene Lizenzmodelle berechnen lassen (Design Patterns). Auch eigene Exceptions, eine eigene generische Klasse (z. B. für die Datenverwaltung/Suche) und Speicherung via JSON/CSV_
-
+## UML Klassendiagramm
 ![ULM-Klassendiagramm](beatmanager.drawio.png)
+
+### KI Prompt
+_Sie erstellen eine Skizze der geplanten Architektur (UML Klassendiagramm). Zu meinem Projekt: einen Beat und Musikprojekt Manager als Konsolen Applikation in Java umsetzen.   Dabei geht es nicht um echte Audiodateien, sondern um ein Verwaltungstool für Musikproduzenten: Man kann Beat-Projekte (mit BPM, Tonart etc.) erfassen, verschiedene Spur Typen wie Samples, Drums oder MIDI-Spuren hinzufügen (Vererbung/Polymorphismus) und automatisch Verkaufspreise für verschiedene Lizenzmodelle berechnen lassen (Design Patterns). Auch eigene Exceptions, eine eigene generische Klasse (z. B. für die Datenverwaltung/Suche) und Speicherung via JSON/CSV_
