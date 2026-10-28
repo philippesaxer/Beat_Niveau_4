@@ -5,7 +5,6 @@ package ch.bms.beatmanager.model;
  */
 public abstract class Track {
 
-    // Clean Code: Named constants instead of magic numbers
     public static final double DEFAULT_VOLUME_DB = 0.0;
     public static final double MIN_VOLUME_DB = -60.0;
     public static final double MAX_VOLUME_DB = 6.0;

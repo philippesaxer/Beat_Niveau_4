@@ -18,14 +18,12 @@ import java.util.Scanner;
 
 /**
  * CLI controller handling user I/O and delegating operations to BeatService.
- * AI-Declaration: Console menu layout and output formatting created with AI support.
  */
 public class ConsoleUI {
 
     private final BeatService beatService;
     private final Scanner scanner;
 
-    // Lazy-initialized pricing strategies
     private PricingStrategy basicStrategy;
     private PricingStrategy wavStrategy;
     private PricingStrategy exclusiveStrategy;
@@ -70,7 +68,7 @@ public class ConsoleUI {
                     running = false;
                     break;
                 default:
-                    System.out.println("\n[!] Ungültige Auswahl. Bitte eine Zahl von 0 bis 7 eingeben.");
+                    System.out.println("\nUngültige Auswahl. Bitte eine Zahl von 0 bis 7 eingeben.");
             }
         }
     }
@@ -78,18 +76,15 @@ public class ConsoleUI {
     private void initializeSystem() {
         try {
             beatService.initializeData();
-            System.out.println("======================================================================");
-            System.out.println("   BEAT- & MUSIKPROJEKT-MANAGER (M4 Kompetenznachweis)");
-            System.out.println("   Daten erfolgreich geladen (" + beatService.getAllProjects().size() + " Projekte bereit).");
-            System.out.println("======================================================================");
+            System.out.println("Beat und Musikprojekt Manager");
+            System.out.println("Daten erfolgreich geladen (" + beatService.getAllProjects().size() + " Projekte bereit).");
         } catch (IOException e) {
-            System.out.println("[FEHLER] Konnte Datei nicht laden: " + e.getMessage());
+            System.out.println("Konnte Datei nicht laden: " + e.getMessage());
         }
     }
 
     private void printMainMenu() {
-        System.out.println("\n---------------------------- HAUPTMENÜ -------------------------------");
-        System.out.println(" [1] Alle Beat-Projekte & Spuren anzeigen (UC3 - Polymorphismus)");
+        System.out.println(" [1] Alle Beat-Projekte und Spuren anzeigen (UC3 - Polymorphismus)");
         System.out.println(" [2] Neues Beat-Projekt anlegen           (UC1 - Validierung)");
         System.out.println(" [3] Spur zu Projekt hinzufügen           (UC2 - Factory Pattern)");
         System.out.println(" [4] Lizenzpreis berechnen                (UC4 - Strategy & Downcast)");
@@ -106,7 +101,7 @@ public class ConsoleUI {
             System.out.println("\nKeine Projekte vorhanden.");
             return;
         }
-        System.out.println("\n======================= AKTUELLE BEAT-PROJEKTE =======================");
+        System.out.println("\nAktuelle Beat-Projekte");
         for (BeatProject project : projects) {
             printProjectDetails(project);
         }
@@ -120,114 +115,111 @@ public class ConsoleUI {
                 project.getMusicalKey().getLabel(),
                 project.getGenre());
         System.out.print(project.getFormattedTrackList());
-        System.out.println("----------------------------------------------------------------------");
     }
 
     private void handleCreateProject() {
-        System.out.println("\n--- NEUES BEAT-PROJEKT ERSTELLEN ---");
+        System.out.println("\nNeues Beat-Projekt anlegen");
         try {
-            System.out.print("Projekttitel (z.B. 'Dark Bounce'): ");
+            System.out.print("Projekttitel: ");
             String title = scanner.nextLine();
 
             int bpm = readIntInput("Tempo in BPM (" + BeatService.MIN_BPM + "-" + BeatService.MAX_BPM + "): ");
 
             System.out.println("Verfügbare Tonarten: C_MINOR, D_MINOR, E_MINOR, F_MINOR, F_SHARP_MINOR, G_MINOR, A_MINOR, C_MAJOR, G_MAJOR");
-            System.out.print("Tonart eingeben (z.B. 'F Minor' oder 'C_MINOR'): ");
+            System.out.print("Tonart eingeben: ");
             MusicalKey key = MusicalKey.fromString(scanner.nextLine());
 
-            System.out.print("Genre (z.B. Trap, Drill, Reggaeton, Deutschrap): ");
+            System.out.print("Genre: ");
             String genre = scanner.nextLine();
 
             BeatProject created = beatService.createProject(title, bpm, key, genre);
-            System.out.println("\n[OK] Projekt '" + created.getTitle() + "' mit ID " + created.getId() + " erfolgreich angelegt!");
+            System.out.println("\nProjekt '" + created.getTitle() + "' mit ID " + created.getId() + " erfolgreich angelegt!");
 
         } catch (InvalidInputException e) {
-            System.out.println("\n[VALIDIERUNGS-FEHLER] " + e.getMessage());
+            System.out.println("\n" + e.getMessage());
         }
     }
 
     private void handleAddTrack() {
-        System.out.println("\n--- SPUR ZU PROJEKT HINZUFÜGEN ---");
+        System.out.println("\nSpur zu Projekt hinzufügen");
         try {
-            System.out.print("Projekt-ID eingeben (z.B. B1): ");
+            System.out.print("Projekt-ID eingeben: ");
             String projectId = scanner.nextLine().trim();
             BeatProject project = beatService.getProjectByIdOrThrow(projectId);
 
-            System.out.println("Spur-Typ wählen: [1] Sample-Spur | [2] MIDI/VST-Spur | [3] Drum-Spur");
+            System.out.println("Spur Typ wählen: [1] Sample-Spur ; [2] MIDI/VST-Spur ; [3] Drum-Spur");
             System.out.print("Auswahl (1-3): ");
             TrackType type = parseTrackTypeChoice(scanner.nextLine().trim());
 
-            System.out.print("Name der Spur (z.B. 'Lead Synth' oder 'Soul Vocal Sample'): ");
+            System.out.print("Name der Spur: ");
             String name = scanner.nextLine();
 
-            double volume = readDoubleInput("Lautstärke in dB (-60.0 bis +6.0, Standard 0): ");
+            double volume = readDoubleInput("Lautstärke in dB: ");
 
             String primaryDetail;
             String secondaryDetail;
 
             if (type == TrackType.SAMPLE) {
-                System.out.print("Sample-Quelle (z.B. 'Splice' oder '70s Vinyl'): ");
+                System.out.print("Sample Quelle: ");
                 primaryDetail = scanner.nextLine();
-                System.out.print("Ist das Sample rechtlich geklärt (Cleared)? (true/false): ");
+                System.out.print("Ist das Sample rechtlich geklärt? (true/false): ");
                 secondaryDetail = scanner.nextLine().trim();
             } else if (type == TrackType.MIDI) {
-                System.out.print("Verwendetes VST-Plugin (z.B. 'FLEX', 'Sytrus', 'Omnisphere'): ");
+                System.out.print("Verwendetes VST Plugin: ");
                 primaryDetail = scanner.nextLine();
-                System.out.print("Preset-Name (z.B. '808 Bass' oder 'Dark Pluck'): ");
+                System.out.print("Preset Name: ");
                 secondaryDetail = scanner.nextLine();
             } else {
-                System.out.print("Name des Drum-Kits (z.B. 'Trap Essentials Kit'): ");
+                System.out.print("Name des Drum Kits: ");
                 primaryDetail = scanner.nextLine();
-                System.out.print("Länge des Patterns in Bars (z.B. 8, 16, 32): ");
+                System.out.print("Länge des Patterns in Bars: ");
                 secondaryDetail = scanner.nextLine();
             }
 
             Track addedTrack = beatService.addTrackToProject(
                     project.getId(), type, name, volume, primaryDetail, secondaryDetail);
-            System.out.println("\n[OK] Spur hinzugefügt: " + addedTrack.getTrackSummary());
+            System.out.println("\nSpur hinzugefügt: " + addedTrack.getTrackSummary());
 
         } catch (InvalidInputException e) {
-            System.out.println("\n[FEHLER] " + e.getMessage());
+            System.out.println("\n" + e.getMessage());
         }
     }
 
     private void handleCalculatePrice() {
-        System.out.println("\n--- LIZENZPREIS BERECHNEN (STRATEGY PATTERN) ---");
+        System.out.println("\nLizenzpreis berechnen");
         try {
-            System.out.print("Projekt-ID eingeben (z.B. B1 oder B2): ");
+            System.out.print("Projekt-ID eingeben: ");
             String projectId = scanner.nextLine().trim();
             BeatProject project = beatService.getProjectByIdOrThrow(projectId);
 
             System.out.println("\nLizenzmodell wählen:");
-            System.out.println(" [1] Basic MP3 Lease (Günstig, Non-Exclusive)");
-            System.out.println(" [2] Premium WAV & Trackout Lease");
-            System.out.println(" [3] Exclusive Rights (Prüft auf geklärte Samples!)");
+            System.out.println(" [1] Basic MP3 Lease");
+            System.out.println(" [2] Premium WAV uns Trackout Lease");
+            System.out.println(" [3] Exclusive Rights");
             System.out.print("Auswahl (1-3): ");
             String licenseChoice = scanner.nextLine().trim();
 
             PricingStrategy strategy = selectPricingStrategy(licenseChoice);
             double finalPrice = beatService.calculateProjectPrice(projectId, strategy);
 
-            System.out.println("\n==================== KALKULATION FÜR '" + project.getTitle().toUpperCase() + "' ====================");
-            System.out.println(" Gewählte Lizenz : " + strategy.getLicenseName());
-            System.out.println(" Bedingungen     : " + strategy.getLicenseConditions());
-            System.out.println(" Anzahl Spuren   : " + project.getTracks().size());
-            System.out.printf(" BERECHNETER PREIS: CHF %.2f%n", finalPrice);
-            System.out.println("======================================================================");
+            System.out.println("\nKalkulation für'" + project.getTitle().toUpperCase());
+            System.out.println("Gewählte Lizenz: " + strategy.getLicenseName());
+            System.out.println("Bedingungen: " + strategy.getLicenseConditions());
+            System.out.println("Anzahl Spuren: " + project.getTracks().size());
+            System.out.printf("Berechneter Preis: CHF %.2f%n", finalPrice);
 
         } catch (SampleNotClearedException e) {
-            System.out.println("\n[LIZENZ-WARNUNG / EXCEPTION] " + e.getMessage());
-            System.out.println("-> Tipp: Wähle eine Lease-Lizenz (1 oder 2) oder kläre zuerst das Sample '" + e.getSampleName() + "'.");
+            System.out.println("\n" + e.getMessage());
         } catch (InvalidInputException e) {
-            System.out.println("\n[FEHLER] " + e.getMessage());
+            System.out.println("\n" + e.getMessage());
         }
     }
 
     private void handleFilterByBpm() {
-        System.out.println("\n--- BEATS NACH BPM FILTERN ---");
+        System.out.println("\nBeats nach BPM filtern");
         try {
-            int min = readIntInput("Mindest-BPM (z.B. 130): ");
-            int max = readIntInput("Maximal-BPM (z.B. 150): ");
+            int min = readIntInput("Mindest-BPM: ");
+            int max = readIntInput("Maximal-BPM: ");
 
             List<BeatProject> matches = beatService.findProjectsByBpmRange(min, max);
             if (matches.isEmpty()) {
@@ -239,7 +231,7 @@ public class ConsoleUI {
                 }
             }
         } catch (InvalidInputException e) {
-            System.out.println("\n[FEHLER] " + e.getMessage());
+            System.out.println("\n" + e.getMessage());
         }
     }
 
@@ -247,18 +239,18 @@ public class ConsoleUI {
         System.out.print("\nID des zu löschenden Projekts eingeben: ");
         String id = scanner.nextLine().trim();
         if (beatService.deleteProject(id)) {
-            System.out.println("[OK] Projekt " + id + " wurde gelöscht.");
+            System.out.println("Projekt " + id + " wurde gelöscht.");
         } else {
-            System.out.println("[!] Kein Projekt mit der ID '" + id + "' gefunden.");
+            System.out.println("Kein Projekt mit der ID '" + id + "' gefunden.");
         }
     }
 
     private void handleSaveData() {
         try {
             beatService.saveProjects();
-            System.out.println("\n[OK] Alle Projekte wurden erfolgreich in 'beats_data.csv' gespeichert.");
+            System.out.println("\nAlle Projekte wurden erfolgreich in beats_data.csv gespeichert.");
         } catch (IOException e) {
-            System.out.println("\n[SPEICHER-FEHLER] " + e.getMessage());
+            System.out.println("\n" + e.getMessage());
         }
     }
 

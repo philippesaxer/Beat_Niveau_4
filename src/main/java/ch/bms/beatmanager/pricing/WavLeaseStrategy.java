@@ -23,7 +23,7 @@ public class WavLeaseStrategy implements PricingStrategy {
 
     @Override
     public String getLicenseName() {
-        return "Premium WAV & Trackout Lease";
+        return "Premium WAV und Trackout Lease";
     }
 
     @Override

@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Core service handling business logic, input validation, and delegation to persistence/factories.
+ * AI-Declaration: seedDemoProjects was created with AI assistance.
  */
 public class BeatService {
 

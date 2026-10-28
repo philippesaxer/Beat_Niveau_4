@@ -25,7 +25,7 @@ public class SampleTrack extends Track {
 
     @Override
     public String getTrackSummary() {
-        String clearanceText = isCleared ? "Cleared (Lizenzfrei)" : "NICHT Cleared (Risiko!)";
+        String clearanceText = isCleared ? "Cleared (Lizenzfrei)" : "Nicht Cleared (Risiko!)";
         return String.format("[SAMPLE] %-18s | Vol: %5.1f dB | Quelle: %-15s | Status: %s",
                 getName(), getVolumeDb(), sampleSource, clearanceText);
     }

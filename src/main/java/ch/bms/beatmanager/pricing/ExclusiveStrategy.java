@@ -34,7 +34,7 @@ public class ExclusiveStrategy implements PricingStrategy {
             if (!sampleTrack.isCleared()) {
                 throw new SampleNotClearedException(
                         "Exklusiv-Verkauf abgelehnt! Das verwendete Sample '" + sampleTrack.getName()
-                                + "' (Quelle: " + sampleTrack.getSampleSource() + ") ist rechtlich NICHT geklärt.",
+                                + "' (Quelle: " + sampleTrack.getSampleSource() + ") ist rechtlich nicht geklärt.",
                         sampleTrack.getName()
                 );
             }
@@ -43,11 +43,11 @@ public class ExclusiveStrategy implements PricingStrategy {
 
     @Override
     public String getLicenseName() {
-        return "Exclusive Rights (Vollständige Übernahme)";
+        return "Exclusive Rights";
     }
 
     @Override
     public String getLicenseConditions() {
-        return "Unlimitierte Streams & Verkäufe, inkl. Stems. Beat wird sofort aus dem Store entfernt.";
+        return "Unlimitierte Streams und Verkäufe, inkl. Stems. Beat wird sofort aus dem Store entfernt.";
     }
 }
