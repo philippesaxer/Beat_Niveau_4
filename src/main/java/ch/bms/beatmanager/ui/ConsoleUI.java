@@ -87,11 +87,11 @@ public class ConsoleUI {
         System.out.println(" [1] Alle Beat-Projekte und Spuren anzeigen (UC3 - Polymorphismus)");
         System.out.println(" [2] Neues Beat-Projekt anlegen           (UC1 - Validierung)");
         System.out.println(" [3] Spur zu Projekt hinzufügen           (UC2 - Factory Pattern)");
-        System.out.println(" [4] Lizenzpreis berechnen                (UC4 - Strategy & Downcast)");
+        System.out.println(" [4] Lizenzpreis berechnen                (UC4 - Strategy und Downcast)");
         System.out.println(" [5] Beats nach BPM-Bereich filtern       (Nice-to-Have Suche)");
         System.out.println(" [6] Beat-Projekt löschen                 (UC5)");
         System.out.println(" [7] Projekte in CSV-Datei speichern      (UC6 - Persistenz)");
-        System.out.println(" [0] Speichern & Programm beenden");
+        System.out.println(" [0] Speichern und Programm beenden");
         System.out.print("Deine Auswahl: ");
     }
 
