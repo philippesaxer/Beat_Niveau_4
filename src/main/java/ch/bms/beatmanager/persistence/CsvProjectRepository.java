@@ -15,7 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * CSV-based implementation of the Repository interface.
@@ -62,13 +61,6 @@ public class CsvProjectRepository implements Repository<BeatProject> {
             }
         }
         return projects;
-    }
-
-    @Override
-    public Optional<BeatProject> findById(String id) throws IOException {
-        return loadAll().stream()
-                .filter(p -> p.getId().equalsIgnoreCase(id))
-                .findFirst();
     }
 
     private String formatProjectLine(BeatProject project) {

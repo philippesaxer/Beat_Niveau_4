@@ -17,12 +17,6 @@ public class SampleTrack extends Track {
         this.isCleared = isCleared;
     }
 
-    public SampleTrack(String name, String sampleSource, boolean isCleared) {
-        super(name);
-        this.sampleSource = sampleSource;
-        this.isCleared = isCleared;
-    }
-
     @Override
     public String getTrackSummary() {
         String clearanceText = isCleared ? "Cleared (Lizenzfrei)" : "Nicht Cleared (Risiko!)";

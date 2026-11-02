@@ -16,12 +16,6 @@ public class DrumTrack extends Track {
         this.patternLengthBars = patternLengthBars;
     }
 
-    public DrumTrack(String name, String drumKitName, int patternLengthBars) {
-        super(name);
-        this.drumKitName = drumKitName;
-        this.patternLengthBars = patternLengthBars;
-    }
-
     @Override
     public String getTrackSummary() {
         return String.format("[DRUM]   %-18s | Vol: %5.1f dB | Kit: %-18s | Länge: %d Bars",
@@ -38,11 +32,4 @@ public class DrumTrack extends Track {
         return String.join(";", "DRUM", getName(), String.valueOf(getVolumeDb()), drumKitName, String.valueOf(patternLengthBars));
     }
 
-    public String getDrumKitName() {
-        return drumKitName;
-    }
-
-    public int getPatternLengthBars() {
-        return patternLengthBars;
-    }
 }

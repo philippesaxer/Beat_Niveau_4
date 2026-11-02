@@ -11,17 +11,10 @@ public abstract class Track {
 
     private String name;
     private double volumeDb;
-    private boolean isMuted;
 
     public Track(String name, double volumeDb) {
         this.name = name;
         this.volumeDb = volumeDb;
-        this.isMuted = false;
-    }
-
-    // Overloaded constructor using default volume (0.0 dB)
-    public Track(String name) {
-        this(name, DEFAULT_VOLUME_DB);
     }
 
     public abstract String getTrackSummary();
@@ -34,23 +27,7 @@ public abstract class Track {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getVolumeDb() {
         return volumeDb;
-    }
-
-    public void setVolumeDb(double volumeDb) {
-        this.volumeDb = volumeDb;
-    }
-
-    public boolean isMuted() {
-        return isMuted;
-    }
-
-    public void setMuted(boolean muted) {
-        isMuted = muted;
     }
 }

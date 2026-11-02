@@ -72,16 +72,8 @@ public class BeatProject {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getBpm() {
         return bpm;
-    }
-
-    public void setBpm(int bpm) {
-        this.bpm = bpm;
     }
 
     public MusicalKey getMusicalKey() {
