@@ -144,7 +144,7 @@ public class BeatService {
         BeatProject trapBeat = new BeatProject("B1", "Midnight Marseille", 142, MusicalKey.F_MINOR, "French Trap");
         trapBeat.addTrack(
                 new MidiTrack("Dark Pad", -4.5, "FLEX", "Dark Strings"),
-                new DrumTrack("808 & Crispy Hats", -1.0, "Metro Boomin Kit", 16)
+                new DrumTrack("808 und Crispy Hats", -1.0, "Metro Boomin Kit", 16)
         );
         trapBeat.addTrack(new SampleTrack("Vintage Flute Loop", -6.0, "70s Vinyl Rip", false));
 
